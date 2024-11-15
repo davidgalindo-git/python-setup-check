@@ -1,32 +1,34 @@
-def main():
-    # Get first operand from the user
-    operand1 = float(input("Enter the first operand: "))
+"""refactor: fonctions mathematiques deplacees dans math_functions.py """
+"""refactor: fonctions prompt dans user_input.py """
+from math_functions import add, subtract, multiply, divide
+from user_input import input_prompt
 
-    # Get the operator from the user
-    operator = input("Enter an operator (+, -, *, /): ")
-
-    # Get second operand from the user
-    operand2 = float(input("Enter the second operand: "))
+def main(operator, operand1, operand2):
 
     # Perform the operation based on the operator
     if operator == '+':
-        result = operand1 + operand2
+        result = add(operand1, operand2)
     elif operator == '-':
-        result = operand1 - operand2
+        result = subtract(operand1, operand2)
     elif operator == '*':
-        result = operand1 * operand2
+        result = multiply(operand1, operand2)
     elif operator == '/':
         if operand2 == 0:
             print("Error: Division by zero is undefined.")
             return
-        result = operand1 / operand2
+        result = divide(operand1, operand2)
     else:
         print("Invalid operator.")
         return
 
     # Print the result
-    print("Result:", result)
+    def display_result():
+        print("Result:", operand1, operator, operand2, "=", result)
 
+# Get inputs
+operator, operand1, operand2 = input_prompt()
 
 # Call the main function to run the program
-main()
+main(operator, operand1, operand2)
+
+display_result()
